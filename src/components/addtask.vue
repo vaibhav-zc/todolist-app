@@ -17,7 +17,7 @@ export default {
   name: "AddTodo",
   data() {
     return {
-      id: 1,
+      id: localStorage.getItem("last_id"), // parse as number
       title: "",
     };
   },
@@ -28,6 +28,9 @@ export default {
         title: this.title,
         completed: false,
       };
+      if (this.title.length == 0) {
+        alert("Todo title is empty");
+      }
       this.id += 1;
       // Send up to parent
 

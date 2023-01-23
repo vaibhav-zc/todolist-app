@@ -24,14 +24,15 @@ export default {
     deleteTodo(id) {
       this.todos = this.todos.filter((todo) => todo.id !== id);
       localStorage.removeItem(`${id}`);
-      localStorage.removeItem("todos");
     },
     addTodo(newTodo) {
       const { id, title, completed } = newTodo;
       this.todos.push({ id, title, completed });
       localStorage.setItem(`${id}`, JSON.stringify({ id, title, completed }));
     },
-    getTodo() {},
+    getTodo() {
+      localStorage.getItem();
+    },
   },
 };
 </script>
