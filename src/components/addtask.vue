@@ -17,7 +17,7 @@ export default {
   name: "AddTodo",
   data() {
     return {
-      id: localStorage.getItem("last_id"), // parse as number
+      id: 1, // parse as number
       title: "",
     };
   },

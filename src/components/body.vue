@@ -20,15 +20,26 @@ export default {
       todos: [],
     };
   },
+  watch: {
+    todos: {
+      todos(newTodo, oldTodo) {},
+    },
+  },
   methods: {
     deleteTodo(id) {
       this.todos = this.todos.filter((todo) => todo.id !== id);
-      localStorage.removeItem(`${id}`);
+      const key = "todokey";
+      let todo_string = localStorage.getItem(key);
+      console.log(todo_string);
+      let todo_obj = JSON.parse(todo_string);
+      console.log(todo_obj);
+      todo_obj.splice(id, 1);
+      localStorage.setItem(key, JSON.stringify(todo_obj));
     },
     addTodo(newTodo) {
       const { id, title, completed } = newTodo;
       this.todos.push({ id, title, completed });
-      localStorage.setItem(`${id}`, JSON.stringify({ id, title, completed }));
+      localStorage.setItem("todokey", JSON.stringify(this.todos));
     },
     getTodo() {
       localStorage.getItem();
